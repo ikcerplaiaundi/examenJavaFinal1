@@ -1,5 +1,7 @@
 package modelo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -15,8 +17,8 @@ public class Reserva {
 	private String apellido_usuario;
 	private String dni_usuario;
 	private int numero_usuarios;
-	private String inicio_reserva;
-	private String fin_reserva;
+	private Date inicio_reserva;
+	private Date fin_reserva;
 	private String fecha_reserva;
 	private boolean luz;
 	private int id_parcela;
@@ -52,17 +54,38 @@ public class Reserva {
 	public void setNumero_usuarios(int numero_usuarios) {
 		this.numero_usuarios = numero_usuarios;
 	}
-	public String getInicio_reserva() {
+
+	public Date getInicio_reserva() {
 		return inicio_reserva;
 	}
-	public void setInicio_reserva(String inicio_reserva) {
+	public void setInicio_reserva(Date inicio_reserva) {
 		this.inicio_reserva = inicio_reserva;
 	}
-	public String getFin_reserva() {
+	public void setInicio_reserva(String dateString)  {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		try {
+			this.inicio_reserva = sdf.parse(dateString);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public Date getFin_reserva() {
 		return fin_reserva;
 	}
-	public void setFin_reserva(String fin_reserva) {
+	public void setFin_reserva(Date fin_reserva) {
 		this.fin_reserva = fin_reserva;
+	}
+	public void setFin_reserva(String dateString)  {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		try {
+			this.fin_reserva = sdf.parse(dateString);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public String getFecha_reserva() {
 		return fecha_reserva;

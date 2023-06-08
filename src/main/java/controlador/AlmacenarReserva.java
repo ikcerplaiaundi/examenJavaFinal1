@@ -36,8 +36,8 @@ public class AlmacenarReserva extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ParcelaModelo parcelaM =new ParcelaModelo ();
 		Parcela parcela =new Parcela();
-		parcela.setId(Integer.parseInt((String) request.getAttribute("id_parcela")));
-		parcela = parcelaM.getParcela(Integer.parseInt((String) request.getAttribute("id_parcela")));
+		parcela.setId(Integer.parseInt((String) request.getParameter("id_parcela")));
+		parcela = parcelaM.getParcela(Integer.parseInt((String) request.getParameter("id_parcela")));
 		//se abrirá la vista infoReserva
 		request.setAttribute("parcela", parcela);
 		request.setAttribute("reserva", reserva);
@@ -48,17 +48,18 @@ public class AlmacenarReserva extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	private static Reserva reserva =new Reserva();
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		reserva.setId_parcela( Integer.parseInt((String) request.getAttribute("id_parcela")));
-		reserva.setNombre_usuario((String) request.getAttribute("nombre"));
-		reserva.setApellido_usuario((String) request.getAttribute("apellido"));
-		reserva.setDni_usuario((String) request.getAttribute("dni"));
-		reserva.setNumero_usuarios(Integer.parseInt((String) request.getAttribute("numero_personas")));
-		reserva.setInicio_reserva((String) request.getAttribute("fecha_inicio"));
-		reserva.setFin_reserva((String) request.getAttribute("fecha_fin"));
+		reserva.setId_parcela( Integer.parseInt((String) request.getParameter("id_parcela")));
+		reserva.setNombre_usuario((String) request.getParameter("nombre"));
+		reserva.setApellido_usuario((String) request.getParameter("apellido"));
+		reserva.setDni_usuario((String) request.getParameter("dni"));
+		reserva.setNumero_usuarios(Integer.parseInt((String) request.getParameter("numero_personas")));
+		reserva.setInicio_reserva((String) request.getParameter("fecha_inicio"));
+        reserva.setFin_reserva((String) request.getParameter("fecha_fin"));
 		
-		if( request.getAttribute("luz")!=null) {
+		if( request.getParameter("luz")!=null) {
 			reserva.setLuz(true);
 		}else {
 			reserva.setLuz(false);

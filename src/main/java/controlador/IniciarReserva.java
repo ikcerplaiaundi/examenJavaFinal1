@@ -31,13 +31,15 @@ public class IniciarReserva extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ParcelaModelo parcelaM = new ParcelaModelo();
 		Parcela parcela =new Parcela();
-		parcela.setId(Integer.parseInt((String) request.getAttribute("id")));
-		parcela = parcelaM.getParcela(parcela.getId());
 		
-		if(request.getAttribute("idEleminar")!=null) {
-			ReservaModelo reservaM =new ReservaModelo();
-			reservaM.deleteReserva(Integer.parseInt((String) request.getAttribute("idEleminar")));
+		if(request.getParameter("id")!=null) {
+		parcela.setId(Integer.parseInt((String) request.getParameter("id")));
+		parcela = parcelaM.getParcela(parcela.getId());
+		}else {
+			System.out.println("id "+request.getParameter("id"));
 		}
+		
+		
 		
 		//se abrirá la vista formReserva.jsp
 		request.setAttribute("parcela", parcela);

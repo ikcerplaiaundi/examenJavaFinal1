@@ -73,14 +73,14 @@
 							<td>${reserva.dni_usuario }</td>
 							<td>${reserva.numero_usuarios }</td>
 							<td>${reserva.inicio_reserva }</td>
-							<td>${reserva.fecha_reserva }</td>
+							<td>${reserva.fin_reserva }</td>
 							<td>${reserva.luz }</td>
 						</tr>
 
 
 					</tbody>
 				</table>
-				<a class="btn btn-danger" href="IniciarReserva?idEleminar=${reserva.id}">Anular reserva</a>
+				<a class="btn btn-danger" href="CancelarReserva?idEleminar=${reserva.id}">Anular reserva</a>
 				
 			</div>
 		</div>

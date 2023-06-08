@@ -39,11 +39,11 @@ public class ParcelaModelo extends Conector {
 	public Parcela getParcela(int id) {
 
 		Parcela parcela = new Parcela();
-		String select = "select * from parcelas where id=?";
+		String select = "select * from parcelas where id="+id;
 		try {
 			PreparedStatement Pst = super.conexion.prepareStatement(select);
 			ResultSet resultSet = Pst.executeQuery(select);
-			Pst.setInt(1, id);
+			//Pst.setInt(1, id);
 			resultSet.next();
 
 			parcela.setId(resultSet.getInt(1));

@@ -38,7 +38,7 @@
 								<td>Numero ${parcela.numero}</td>
 								<td>metros ${parcela.m_cuadrados}</td>
 								<td>precio ${parcela.precio_dia}</td>
-								<td><a href="IniciarReserva.java?id=${parcela.id}">Reservar</a></td>
+								<td><a href="IniciarReserva?id=${parcela.id}">Reservar</a></td>
 							</tr>
 					</c:forEach>
 						

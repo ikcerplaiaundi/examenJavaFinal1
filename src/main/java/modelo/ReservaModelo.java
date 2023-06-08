@@ -1,5 +1,6 @@
 package modelo;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,8 +25,8 @@ public class ReservaModelo extends Conector{
 			Pst.setString(2, reserva.getApellido_usuario());
 			Pst.setString(3, reserva.getDni_usuario());
 			Pst.setInt(4, reserva.getNumero_usuarios());
-			Pst.setString(5, reserva.getInicio_reserva());
-			Pst.setString(6,reserva.getFin_reserva());
+			Pst.setDate(5,  new Date( reserva.getInicio_reserva().getTime()));
+			Pst.setDate(6,new Date(reserva.getFin_reserva().getTime()));
 			Pst.setBoolean(7, reserva.getLuz());
 			Pst.setInt(8, reserva.getId_parcela());
 			Pst.execute();
